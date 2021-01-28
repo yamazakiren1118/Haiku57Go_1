@@ -1,0 +1,16 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_with url:'/login',local:true,scope: :session do |form| %>
+<div>
+<%= form.label :name %>
+  <%= form.text_field :name %></div>
+<div>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+</div>
+<div>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+</div>
+  <%= form.submit :送信%>
+<% end %>

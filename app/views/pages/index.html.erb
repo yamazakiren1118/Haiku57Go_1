@@ -1,0 +1,14 @@
+<h1>Pages#index</h1>
+<p>Find me in app/views/pages/index.html.erb</p>
+<% @haiku.each do |haiku| %>
+<div class="haiku">
+  <p class="haiku__text">
+    <span><%= haiku.haiku1 %></span>
+    <span><%= haiku.haiku2 %></span>
+    <span><%= haiku.haiku3 %></span>
+  </p>
+    <% if User.find_by(id: haiku.user_id) == carrent_user %>
+    <%= link_to '削除',haiku_path(haiku.id),method: :delete,class: :haiku__link %>
+  <% end %>
+</div>
+<% end %>

@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    line-height:1;
+}
+body{
+    min-height: 100vh;
+}
+header{
+    width:100%;
+    height:calc(100vw * 0.08);
+    background-color: rgb(91, 206, 91);
+}
+.main_content{
+    width:60%;
+    min-height:100vh;
+    margin:0 auto;
+    background-color: rgba(201, 173, 50, 0.822);
+    .haiku{
+        width:50%;
+        max-width: 400px;
+        position: relative;
+        border:2px solid black;
+        &:after{
+            display:block;
+            content:'';
+            padding-bottom: 50%;
+        }
+        &__text{
+         position:absolute;
+         top:50%;
+         left:50%;
+         transform: translate(-50%,-50%);
+         span{
+             display:block;
+         }   
+        }
+        &__link{
+            position:absolute;
+            bottom:0;
+            right:0;
+        }
+    }
+}

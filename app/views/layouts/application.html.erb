@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viweport" content="width=device-width,initial-scale=1">
+    <title>Haiku57Go1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% flash.each do |key, value|  %>
+    <div class="flash <%= key %>">
+      <p><%= value %></p>
+    </div>
+  <% end %>
+  <header>
+  <% if carrent_user != nil %>
+    <%= link_to "一覧",pages_path %>
+    <%= link_to "ログアウト",logout_path,method: :delete%>
+    <%= link_to "新規俳句",new_haiku_path %>
+    <%= link_to carrent_user.name,user_url(carrent_user.id) %>
+    
+  <% else %>
+    <%= link_to "新規登録",new_user_path%>
+    <%= link_to "ログイン" ,sessions_new_path%>
+  <% end %>
+
+  </header>
+  <div class="main_content">
+    <%= yield %>
+  </div>
+  </body>
+  <%= params[:vali_error] %>
+  <script>
+    $(document).ready(function(){
+      console.log('hello');
+    });
+  </script>
+</html>

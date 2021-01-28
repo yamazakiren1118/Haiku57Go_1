@@ -1,0 +1,13 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<%= link_to "アカウント削除",user_path(session[:user_id]),method: :delete%>
+<% @haiku.each do |haiku| %>
+<div class="haiku">
+  <p class="haiku__text">
+    <span><%= haiku.haiku1 %></span>
+    <span><%= haiku.haiku2 %></span>
+    <span><%= haiku.haiku3 %></span>
+  </p>
+  <%= link_to '削除',haiku_path(haiku.id),method: :delete,class: :haiku__link %>
+</div>
+<% end %>
