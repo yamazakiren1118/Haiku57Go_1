@@ -8,7 +8,10 @@
     <span><%= haiku.haiku3 %></span>
   </p>
     <% if User.find_by(id: haiku.user_id) == carrent_user %>
-    <%= link_to '削除',haiku_path(haiku.id),method: :delete,class: :haiku__link %>
+    <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do %>
+        <i class="fas fa-trash-alt"></i>
+        <span>削除</span>
+    <% end %>
   <% end %>
 </div>
 <% end %>

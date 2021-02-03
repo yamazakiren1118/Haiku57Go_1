@@ -8,8 +8,11 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.6.1/css/all.css" %>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Potta+One&display=swap"%>
   </head>
-
   <body>
   <% flash.each do |key, value|  %>
     <div class="flash <%= key %>">
@@ -17,17 +20,34 @@
     </div>
   <% end %>
   <header>
-  <% if carrent_user != nil %>
-    <%= link_to "一覧",pages_path %>
-    <%= link_to "ログアウト",logout_path,method: :delete%>
-    <%= link_to "新規俳句",new_haiku_path %>
-    <%= link_to carrent_user.name,user_url(carrent_user.id) %>
-    
-  <% else %>
-    <%= link_to "新規登録",new_user_path%>
-    <%= link_to "ログイン" ,sessions_new_path%>
-  <% end %>
-
+  <div class="logo">
+    <%= link_to(root_path) do%>
+      <%= image_tag 'logo.png' %>
+    <% end %>
+  </div>
+  <div class="btns">
+    <% if carrent_user != nil %>
+      <%= link_to "一覧",pages_path %>
+      <%= link_to(logout_path,method: :delete) do %>
+            <i class="fas fa-sign-in-alt"></i>
+            <span>ログアウト</span>
+      <% end %>
+      <%= link_to "新規俳句",new_haiku_path %>
+      <%= link_to (user_url(carrent_user.id) ) do %>
+          <i class="far fa-user"></i>
+          <span><%= carrent_user.name %></span>
+      <% end %>
+    <% else %>
+      <%= link_to(new_user_path) do %>
+        <i class="far fa-user"></i>
+        <span>新規登録</span>
+      <% end %>
+      <%= link_to(sessions_new_path) do %>
+        <i class="fas fa-sign-in-alt"></i>
+        <span>ログイン</span>
+      <% end %>
+    <% end %>
+  </div>
   </header>
   <div class="main_content">
     <%= yield %>

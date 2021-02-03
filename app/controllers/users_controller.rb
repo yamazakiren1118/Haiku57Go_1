@@ -9,14 +9,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      binding.pry
+      # binding.pry
       flash[:now] = "成功しました"
       redirect_to user_url(@user)
       # redirect_to user_path_path(id: @user.id)
       # redirect_to "/users/#{@user.id}"
     else
       flash[:danger] = "失敗しました"
-      binding.pry
+      # binding.pry
       redirect_to new_user_path
     end
   end

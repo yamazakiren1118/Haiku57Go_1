@@ -2,6 +2,8 @@
     margin:0;
     padding:0;
     line-height:1;
+    // font-family: 'Potta One', cursive;
+    text-decoration:none;
 }
 body{
     min-height: 100vh;
@@ -9,22 +11,63 @@ body{
 header{
     width:100%;
     height:calc(100vw * 0.08);
-    background-color: rgb(91, 206, 91);
+    // background-color: rgb(91, 206, 91);
+    background:linear-gradient(rgb(91, 206, 91),rgb(143, 206, 143));
+    border-bottom:rgb(0, 110, 0) 5px solid;
+    font-size:30px;
+    .btns{
+        float:right;
+    }
+}
+.flash{
+    width:40%;
+    position:absolute;
+    top:0;
+    left:50%;
+    z-index:100;
+    transform:translate(-50%,0);
+    &:after{
+        // position:absolute;
+        display:block;
+        content:'';
+        padding-bottom:50%;
+    }
+    &.danger{
+        background-color: red;
+    }
+    &.now{
+        background-color:blue;
+    }
+    p{
+        position:absolute;
+        width:100%;
+        font-size:40px;
+        text-align: center;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+    }
 }
 .main_content{
-    width:60%;
+    width:100%;
     min-height:100vh;
     margin:0 auto;
-    background-color: rgba(201, 173, 50, 0.822);
+    background-color:rgb(255, 250, 226);
     .haiku{
-        width:50%;
-        max-width: 400px;
+        width:37%;
+        background-color: rgba(192, 186, 159, 0.5);
         position: relative;
-        border:2px solid black;
+        border:2px solid rgb(71, 105, 67);
+        margin:0 auto 30px auto;
+        p{
+            width:100%;
+            font-size:65px;
+        }
+
         &:after{
             display:block;
             content:'';
-            padding-bottom: 50%;
+            padding-bottom: 60%;
         }
         &__text{
          position:absolute;
@@ -35,10 +78,46 @@ header{
              display:block;
          }   
         }
-        &__link{
+        &__del{
             position:absolute;
             bottom:0;
             right:0;
+            padding:0 10px 10px 0;
+            font-size:30px;
         }
+    }
+
+    form{
+        width:50%;
+        position:relative;
+        margin:0 auto;
+        border-color:rgb(71, 105, 67);
+        div{
+            position:relative;
+            width:100%;
+            margin-top:5%;
+            &:after{
+                display:block;
+                content:'';
+                padding-bottom:100px;
+            }
+            &:last-of-type{
+                width:30%;
+                margin: 5% auto 0 auto;
+                input{
+                    padding-left:0;
+                }
+            }
+            input{
+                display:block;
+                padding-left:20px;
+                font-size:80px;
+                width:100%;
+                height:100%;
+                position:absolute;
+                background-color:rgba(192, 186, 159, 0.5);
+            }
+        }
+
     }
 }

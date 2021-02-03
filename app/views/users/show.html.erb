@@ -8,6 +8,9 @@
     <span><%= haiku.haiku2 %></span>
     <span><%= haiku.haiku3 %></span>
   </p>
-  <%= link_to '削除',haiku_path(haiku.id),method: :delete,class: :haiku__link %>
+  <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do%>
+    <i class="fas fa-trash-alt"></i>
+    <span>削除</span>
+  <% end %>
 </div>
 <% end %>
