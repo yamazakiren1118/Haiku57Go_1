@@ -1,0 +1,24 @@
+<h1>Haiku#show</h1>
+<p>Find me in app/views/haikus/show.html.erb</p>
+<div class="haiku">
+    <p class="haiku__text">
+        <span><%= @haiku.haiku1 %></span>
+        <span><%= @haiku.haiku2 %></span>
+        <span><%= @haiku.haiku3 %></span>
+    </p>
+</div>
+<% @comment.each do |comment| %>
+<div class="haiku comment">
+  <p class="haiku__text">
+    <span><%= comment.comment1 %></span>
+    <span><%= comment.comment2 %></span>
+    <span><%= comment.comment3 %></span>
+  </p>
+</div>
+<% end %>
+<div class="comment_btn">
+    <%= link_to(new_comment_path(haiku_id: params[:haiku_id]),class: :haiku__comment) do %>
+        <i class="fas fa-trash-alt"></i>
+        <span>コメント</span>
+    <% end %>
+</div>

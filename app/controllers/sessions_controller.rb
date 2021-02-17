@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     post = session_params
     user = User.find_by(email: post[:email])
-    # binding.pry
+    binding.pry
     if user && user.authenticate(post[:password])
       session[:user_id] = user.id
       flash[:now] = 'ログインしました'

@@ -14,5 +14,7 @@
   <%= form.text_field :haiku3 %>
   </div>
   <%= form.hidden_field :user_id,value:session[:user_id] %>
-  <%= form.submit :送信%>
+  <div>
+    <%= form.submit :送信%>
+  </div>
 <% end %>

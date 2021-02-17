@@ -1,0 +1,19 @@
+<%= form_with model:@haiku,url:"/edit/haiku",method: :put do |form| %>
+  <div>
+    <%= form.label :haiku1 %>
+    <%= form.text_field :haiku1 %>
+  </div>
+  <div>
+    <%= form.label :haiku2 %>
+    <%= form.text_field :haiku2 %>
+  </div>
+  <div>
+    <%= form.label :haiku3 %>
+    <%= form.text_field :haiku3 %>
+  </div>
+    <%= form.hidden_field :haiku_id,value:params[:haiku_id] %>
+    <%= form.hidden_field :user_id,value:session[:user_id] %>
+  <div>
+    <%= form.submit :送信%>
+  </div>
+<% end %>
