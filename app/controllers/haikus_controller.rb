@@ -6,7 +6,7 @@ class HaikusController < ApplicationController
   end
   def create
     @haiku = Haiku.new(haiku_params)
-    binding.pry
+    # binding.pry
     if @haiku.save
       flash[:now] = '投稿しました'
       redirect_to new_haiku_path
@@ -30,7 +30,7 @@ class HaikusController < ApplicationController
     @user = @haiku.user
   end
   def update
-    binding.pry
+    # binding.pry
     @haiku = Haiku.find(params[:haiku][:haiku_id])
     if @haiku.update(haiku_params)
       flash[:now] = '編集しました'
