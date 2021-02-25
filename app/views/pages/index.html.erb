@@ -1,29 +1,3 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
-<% @haiku.each do |haiku| %>
-<div class="haiku">
-  <p class="haiku__text">
-    <span><%= haiku.haiku1 %></span>
-    <span><%= haiku.haiku2 %></span>
-    <span><%= haiku.haiku3 %></span>
-  </p>
-  <% if carrent_user != nil %>
-    <% if User.find_by(id: haiku.user_id) == carrent_user %>
-      <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do %>
-          <i class="fas fa-trash-alt"></i>
-          <span>削除</span>
-      <% end %>
-      <%= link_to(edit_haikus_path(haiku.id,haiku_id:haiku.id),class: :haiku__edit) do %>
-          <i class="fas fa-trash-alt"></i>
-          <span>編集</span>
-      <% end %>
-    <% else %>
-      <%= link_to(haiku_path(haiku.id ,haiku_id: haiku.id),class: :haiku__comment) do %>
-          <i class="fas fa-trash-alt"></i>
-          <span>コメント</span>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-<% end %>
+<h1>俳句一覧</h1>
+<%= render partial: "pages/haikus_index",locals: {haikus:@haikus}%>
 

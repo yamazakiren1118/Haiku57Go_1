@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def index
-    @haiku = Haiku.all
+    
+    @haikus = Haiku.page(params[:page]).per(4)
+    # binding.pry
   end
 end

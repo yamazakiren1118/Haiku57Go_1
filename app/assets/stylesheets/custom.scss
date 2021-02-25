@@ -53,6 +53,12 @@ header{
     min-height:100vh;
     margin:0 auto;
     background-color:rgb(255, 250, 226);
+    h1{
+        width:37%;
+        margin: 0 auto;
+        font-size:50px;
+        padding:20px 0;
+    }
     .haiku{
         width:37%;
         background-color: rgba(192, 186, 159, 0.5);
@@ -155,6 +161,21 @@ header{
                 top:50%;
                 left:50%;
                 transform: translate(-50%,-40%);
+            }
+        }
+    }
+    nav{
+        &.pagination{
+            width:37%;
+            margin:0 auto;
+            span{
+                margin: 0 1.5px;
+                border:1px black solid;
+                border-radius: 2px;
+                a{
+                    padding:3%;
+                    
+                }
             }
         }
     }

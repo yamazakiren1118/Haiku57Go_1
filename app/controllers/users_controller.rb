@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   end
   def show
     #カレントユーザーにする
-    @haiku = carrent_user.haikus
+    # @haiku = carrent_user.haikus
+    @haikus = carrent_user.haikus.page(params[:page]).per(4)
   end
   def destroy
     User.destroy(session[:user_id])
