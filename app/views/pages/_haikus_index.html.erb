@@ -7,6 +7,10 @@
   </p>
   <% if carrent_user != nil %>
     <% if User.find_by(id: haiku.user_id) == carrent_user %>
+      <%= form_with url:haiku_path(haiku.id),method: :delete,class:("haiku_del#{haiku.id} aaa") do |form| %>
+        
+        <%= form.submit class:("haiku_del#{haiku.id}") %>
+      <% end %>
       <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do %>
           <i class="fas fa-trash-alt"></i>
           <span>削除</span>
@@ -18,6 +22,7 @@
     <% else %>
       <%= link_to(haiku_path(haiku.id ,haiku_id: haiku.id),class: :haiku__comment) do %>
           <i class="fas fa-trash-alt"></i>
+          <%= haiku.comments.size %>
           <span>コメント</span>
       <% end %>
     <% end %>

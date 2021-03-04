@@ -40,6 +40,13 @@ class HaikusController < ApplicationController
       redirect_to new_haiku_path
     end
   end
+  def search
+    # @haikus = Haiku.where("haiku1 LIKE ?","%#{params[:haiku]}%").where("haiku2 LIKE ?","%#{params[:haiku]}%").where("haiku3 LIKE ?","%#{params[:haiku]}%").page(params[:page]).per(4)
+    @haikus = Haiku.where("haiku1 LIKE ?","%#{params[:haiku]}%").or(Haiku.where("haiku2 LIKE ?","%#{params[:haiku]}%")).or(Haiku.where("haiku3 LIKE ?","%#{params[:haiku]}%")).page(params[:page]).per(4)
+    
+    binding.pry
+    
+  end
 end
 
 private

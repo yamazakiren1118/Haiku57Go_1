@@ -14,6 +14,11 @@
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Potta+One&display=swap"%>
   </head>
   <body>
+  <div class="dialog" style="">
+    <button>
+      送信
+    </button>
+  </div>
   <% flash.each do |key, value|  %>
     <div class="flash <%= key %>">
       <p><%= value %></p>
@@ -25,14 +30,20 @@
       <%= image_tag 'logo.png' %>
     <% end %>
   </div>
+  <div class="search">
+    <%= form_with url:haikus_search_path,method: :get,local: :true do |haiku| %>
+      <%= haiku.text_field :haiku %>
+      <%= haiku.submit %>
+    <% end %>
+  </div>
   <div class="btns">
     <% if carrent_user != nil %>
       <%= link_to "一覧",pages_path %>
-      <%= link_to(logout_path,method: :delete) do %>
+      <%= link_to(logout_path,method: :delete,class: :logout_btn) do %>
             <i class="fas fa-sign-in-alt"></i>
             <span>ログアウト</span>
       <% end %>
-      <%= link_to "新規俳句",new_haiku_path %>
+      <%= link_to "新規俳句",new_haiku_path,class: :haiku_btn %>
       <%= link_to (user_url(carrent_user.id) ) do %>
           <i class="far fa-user"></i>
           <span><%= carrent_user.name %></span>

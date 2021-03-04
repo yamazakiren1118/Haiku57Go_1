@@ -1,3 +1,3 @@
 <h1>ユーザープロフィール</h1>
 <%= render partial: "pages/haikus_index",locals: {haikus:@haikus}%>
-<%= link_to "アカウント削除",user_path(session[:user_id]),method: :delete%>
+<%= link_to "アカウント削除",user_path(session[:user_id]),method: :delete,class: :user_del%>

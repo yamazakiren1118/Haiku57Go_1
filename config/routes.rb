@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   delete 'logout',to: 'sessions#destroy'
   put '/edit/haiku',to:'haikus#update'
   get '/haikus/:id/edit',to:'haikus#edit',as: 'edit_haikus'
+  get 'haikus/search'
 
   # get "users/:id", to: "users#show", as: "user_path"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

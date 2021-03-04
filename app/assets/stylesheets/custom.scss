@@ -48,6 +48,17 @@ header{
         transform:translate(-50%,-50%);
     }
 }
+.dialog{
+    display:none;
+    width:500px;
+    height:100px;
+    margin:0 auto;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    background-color:red;
+}
 .main_content{
     width:100%;
     min-height:100vh;
