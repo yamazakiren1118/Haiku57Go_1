@@ -98,7 +98,7 @@ header{
              display:block;
          }   
         }
-        &__del,&__comment{
+        &__del{
             position:absolute;
             bottom:0;
             right:0;
@@ -111,6 +111,20 @@ header{
             padding:0 0 10px 0;
             font-size:30px;
             right:15%;
+        }
+        &__comment{
+            position:absolute;
+            bottom:0;
+            padding:0 0 10px 0;
+            font-size:30px;
+            right:28%;
+        }
+        &__favorite{
+            position:absolute;
+            bottom:0;
+            padding:0 0 10px 0;
+            font-size:30px;
+            right:10%;
         }
     }
 
