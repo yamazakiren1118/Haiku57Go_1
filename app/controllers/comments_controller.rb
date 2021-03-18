@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      flash[:now] = 'コメントを投稿しました'
+      flash[:info] = 'コメントを投稿しました'
       redirect_to haiku_path(@comment.haiku_id,haiku_id: @comment.haiku_id)
     else
       flash[:danger] = 'コメントの投稿に失敗'

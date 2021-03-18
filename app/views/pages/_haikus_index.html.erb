@@ -1,45 +1,48 @@
 <% haikus.each do |haiku| %>
-<div class="haiku">
-  <p class="haiku__text">
-    <span><%= haiku.haiku1 %></span>
-    <span><%= haiku.haiku2 %></span>
-    <span><%= haiku.haiku3 %></span>
-  </p>
-  <% if carrent_user != nil %>
-    <%= link_to(haiku_path(haiku.id ,haiku_id: haiku.id),class: :haiku__comment) do %>
-          <i class="fas fa-trash-alt"></i>
-          <%= haiku.comments.size %>
-          <span>コメント</span>
-    <% end %>
-    <% if User.find_by(id: haiku.user_id) == carrent_user %>
-      <%= form_with url:haiku_path(haiku.id),method: :delete,class:("haiku_del#{haiku.id} aaa") do |form| %>
-        
-        <%= form.submit class:("haiku_del#{haiku.id}") %>
-      <% end %>
-      <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do %>
-          <i class="fas fa-trash-alt"></i>
-          <span>削除</span>
-      <% end %>
-      <%= link_to(edit_haikus_path(haiku.id,haiku_id:haiku.id),class: :haiku__edit) do %>
-          <i class="fas fa-trash-alt"></i>
-          <span>編集</span>
-      <% end %>
+<div class="haiku row">
+  <div class=" col-md-6 offset-md-3">
+    <div class="card border border-success rounded">
+      <div class="card-body">
+        <p class="haiku__text"><span><%= haiku.haiku1 %></span></p>
+        <p class="haiku__text"><span><%= haiku.haiku2 %></span></p>
+        <p class="haiku__text"><span><%= haiku.haiku3 %></span></p>
+      </div>
+      <div class="card-footer border-success">
+        <% if carrent_user != nil %>
+          <%= link_to(haiku_path(haiku.id ,haiku_id: haiku.id),class: :haiku__comment) do %>
+                <i class="fas fa-trash-alt"></i>
+                <%= haiku.comments.size %>
+                <span>コメント</span>
+          <% end %>
+          <% if User.find_by(id: haiku.user_id) == carrent_user %>
+            <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do %>
+                <i class="fas fa-trash-alt"></i>
+                <span>削除</span>
+            <% end %>
+            <%= link_to(edit_haikus_path(haiku.id,haiku_id:haiku.id),class: :haiku__edit) do %>
+                <i class="fas fa-trash-alt"></i>
+                <span>編集</span>
+            <% end %>
 
-    <% else %>
-      <% if Favorite.find_by(haiku_id: haiku.id,user_id: carrent_user.id) %>
-      <% favorite = Favorite.find_by(haiku_id: haiku.id,user_id: carrent_user.id) %>
-        <%= link_to(favorite_path(favorite.id,haiku_id: haiku.id),method: :delete ,class: :haiku__favorite) do %>
-        <i class="fas fa-trash-alt"></i>
-        <span><%= haiku.favorites.length %>いいね済み</span>
+          <% else %>
+            <% if Favorite.find_by(haiku_id: haiku.id,user_id: carrent_user.id) %>
+            <% favorite = Favorite.find_by(haiku_id: haiku.id,user_id: carrent_user.id) %>
+              <%= link_to(favorite_path(favorite.id,haiku_id: haiku.id),method: :delete ,class: :haiku__favorite) do %>
+              <i class="fas fa-trash-alt"></i>
+              <span><%= haiku.favorites.length %>いいね済み</span>
+              <% end %>
+            <% else %>
+            <%= link_to favorites_path(haiku_id: haiku.id),method: :post ,class: :haiku__favorite do %>
+                <i class="fas fa-trash-alt"></i>
+                <span><%= haiku.favorites.length %>いいね</span>
+            <% end %>
+            <% end %>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= link_to favorites_path(haiku_id: haiku.id),method: :post ,class: :haiku__favorite do %>
-            <i class="fas fa-trash-alt"></i>
-            <span><%= haiku.favorites.length %>いいね</span>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
 <% end %>
 <%= paginate haikus %>

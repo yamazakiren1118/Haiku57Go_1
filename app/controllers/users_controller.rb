@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       # binding.pry
-      flash[:now] = "成功しました"
+      flash[:info] = "成功しました"
       redirect_to user_url(@user)
       # redirect_to user_path_path(id: @user.id)
       # redirect_to "/users/#{@user.id}"

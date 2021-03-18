@@ -1,23 +1,34 @@
 <h1>俳句コメントページ</h1>
-<div class="haiku">
-    <p class="haiku__text">
-        <span><%= @haiku.haiku1 %></span>
-        <span><%= @haiku.haiku2 %></span>
-        <span><%= @haiku.haiku3 %></span>
-    </p>
+<div class="row">
+<div class="col-md-6 offset-md-3">
+  <div class="card border border-success rounded">
+    <div class="card-body">
+        <p class="haiku__text"><span><%= @haiku.haiku1 %></span></p>
+        <p class="haiku__text"><span><%= @haiku.haiku2 %></span></p>
+        <p class="haiku__text"><span><%= @haiku.haiku3 %></span></p>
+    </div>
+  </div>
+  <% @comment.each do |comment| %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+    <div class="card border border-success rounded">
+      <div class="card-body">
+        <p class="comment__text"><span><%= comment.comment1 %></span></p>
+        <p class="comment__text"><span><%= comment.comment2 %></span></p>
+        <p class="comment__text"><span><%= comment.comment3 %></span></p>
+      </div>
+      <div class="card-footer border-success"><p><%= comment.user.name %></p></div>
+    </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <%= link_to(new_comment_path(haiku_id: params[:haiku_id]),class: ('btn btn-secondary btn-block')) do %>
+          <i class="fas fa-trash-alt"></i>
+          <span>コメント</span>
+      <% end %>
+    </div>
+  </div>
 </div>
-<% @comment.each do |comment| %>
-<div class="haiku comment">
-  <p class="haiku__text">
-    <span><%= comment.comment1 %></span>
-    <span><%= comment.comment2 %></span>
-    <span><%= comment.comment3 %></span>
-  </p>
-</div>
-<% end %>
-<div class="comment_btn">
-    <%= link_to(new_comment_path(haiku_id: params[:haiku_id]),class: :haiku__comment) do %>
-        <i class="fas fa-trash-alt"></i>
-        <span>コメント</span>
-    <% end %>
 </div>

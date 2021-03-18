@@ -1,8 +1,8 @@
 $(window).on('turbolinks:load',function(){
     // $('.flash').fadeOut(2000);
-    setTimeout("$('.flash').fadeOut('slow')", 1000) ;
-    console.log('editok');
-    console.log('editok');
+    
+
+    setTimeout("$('.alert').fadeOut('slow')", 1000) ;
     $(".haiku__del").on('click',function(){
         if(confirm('俳句を削除しますか')){
 

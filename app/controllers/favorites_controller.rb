@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
     @favorite.haiku_id = params[:haiku_id]
     @favorite.user_id = carrent_user.id
     if @favorite.save
-      flash[:now] = 'いいねしました'
+      flash[:info] = 'いいねしました'
       redirect_to pages_path
     else
       flash[:danger] = 'いいねできませんでした'
@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find_by(haiku_id: params[:haiku_id],user_id: carrent_user.id)
     if @favorite.delete
-      flash[:now] = 'いいねを削除しました'
+      flash[:info] = 'いいねを削除しました'
       redirect_to pages_path
     else
       flash[:danger] = 'いいねを削除できませんでした'

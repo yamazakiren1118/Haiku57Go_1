@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     binding.pry
     if user && user.authenticate(post[:password])
       session[:user_id] = user.id
-      flash[:now] = 'ログインしました'
+      flash[:info] = 'ログインしました'
       redirect_to user_url(user)
     else
       flash[:danger] = 'ログインに失敗しました'

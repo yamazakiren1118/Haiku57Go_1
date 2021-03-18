@@ -5,7 +5,6 @@
     <title>Haiku57Go1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%# <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.6.1/css/all.css" %>
@@ -14,13 +13,8 @@
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Potta+One&display=swap"%>
   </head>
   <body>
-  <div class="dialog" style="">
-    <button>
-      送信
-    </button>
-  </div>
   <% flash.each do |key, value|  %>
-    <div class="flash <%= key %>">
+    <div class="alert alert-<%= key %> position-absolute top-0 w-100">
       <p><%= value %></p>
     </div>
   <% end %>
@@ -31,9 +25,9 @@
     <% end %>
   </div>
   <div class="search">
-    <%= form_with url:haikus_search_path,method: :get,local: :true do |haiku| %>
-      <%= haiku.text_field :haiku %>
-      <%= haiku.submit :search %>
+    <%= form_with url:haikus_search_path,method: :get,local: :true,class: ('form-inline') do |haiku| %>
+      <%= haiku.text_field :haiku,class: ('form-control') %>
+      <%= haiku.submit :search ,class: ('btn btn-primary')%>
     <% end %>
   </div>
   <div class="btns">
@@ -60,7 +54,7 @@
     <% end %>
   </div>
   </header>
-  <div class="main_content">
+  <div class="container">
     <%= yield %>
   </div>
   </body>

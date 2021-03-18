@@ -3,7 +3,7 @@ class Haiku < ApplicationRecord
   has_many :comments
   has_many :favorites
   has_many :users,through: :favorites
-  validates :haiku1,presence: true
-  validates :haiku2,presence: true
-  validates :haiku3,presence: true
+  validates :haiku1,presence: true,length:{in: 4..7}
+  validates :haiku2,presence: true,length:{in: 5..9}
+  validates :haiku3,presence: true,length:{in: 4..7}
 end
