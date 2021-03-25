@@ -1,0 +1,7 @@
+var favorite = $(".haiku_favorite<%= params[:haiku_id] %>");
+console.log("<%= params[:haiku_id] %>");
+<% flash.now[:info] = 'いいねしました' %>
+favorite.replaceWith("<%=j(render partial: "favorites/favorite",locals:{haiku:@haiku,} ) %>");
+<%# $("body").prepend("<div class='alert alert-info position-absolute top-0 w-100'><p>いいねしました</p></div>"); %>
+<%# <div class="alert alert-info position-absolute top-0 w-100"><p>いいねしました</p></div> %>
+

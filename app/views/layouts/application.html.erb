@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viweport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Haiku57Go1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,45 +18,55 @@
       <p><%= value %></p>
     </div>
   <% end %>
-  <header>
-  <div class="logo">
-    <%= link_to(root_path) do%>
-      <%= image_tag 'logo.png' %>
-    <% end %>
-  </div>
-  <div class="search">
-    <%= form_with url:haikus_search_path,method: :get,local: :true,class: ('form-inline') do |haiku| %>
-      <%= haiku.text_field :haiku,class: ('form-control') %>
-      <%= haiku.submit :search ,class: ('btn btn-primary')%>
-    <% end %>
-  </div>
-  <div class="btns">
-    <% if carrent_user != nil %>
-      <%= link_to "一覧",pages_path %>
-      <%= link_to(logout_path,method: :delete,class: :logout_btn) do %>
-            <i class="fas fa-sign-in-alt"></i>
-            <span>ログアウト</span>
+  <nav class="navbar navbar-expand-md bg-success">
+    <%= link_to '俳句57Go',root_path,class:'navbar-brand'%>
+    <span class="nav-item">
+      <%= link_to "一覧",pages_path,class:'nav-link' %>
+    </span>
+    <div class="collapse navbar-collapse">
+      <div class="navbar-nav mr-auto">
+        <% if carrent_user != nil %>
+          <span class="nav-item">
+            <%= link_to(user_url(carrent_user.id),class:'nav-link') do %>
+              <i class="far fa-user"></i>
+              <span><%= carrent_user.name %></span>
+            <% end %>
+          </span>
+          <span class="nav-item">
+            <%= link_to "新規俳句",new_haiku_path,class:'nav-link' %>
+          </span>
+          <span class="nav-item">
+            <%= link_to(logout_path,method: :delete,class:('nav-link logout_btn')) do %>
+              <i class="fas fa-sign-in-alt"></i>
+              <span>ログアウト</span>
+            <% end %>
+          </span>
+        <% else %>
+          <span class="nav-item">
+           <%= link_to(new_user_path,class:'nav-link') do %>
+              <i class="far fa-user"></i>
+              <span>新規登録</span>
+            <% end %>
+          </span>
+          <span class="nav-item">
+            <%= link_to(sessions_new_path,class:'nav-link') do %>
+              <i class="fas fa-sign-in-alt"></i>
+              <span>ログイン</span>
+            <% end %>
+          </span>
+        <%end%>
+      </div>
+      <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
+      <div class="col-xs-4">
+        <%= haiku.text_field :haiku,class:'form-control mr-2' %>
+      </div>
+        <%= haiku.submit :search ,class:'btn btn-primary' %>
       <% end %>
-      <%= link_to "新規俳句",new_haiku_path,class: :haiku_btn %>
-      <%= link_to (user_url(carrent_user.id) ) do %>
-          <i class="far fa-user"></i>
-          <span><%= carrent_user.name %></span>
-      <% end %>
-    <% else %>
-      <%= link_to(new_user_path) do %>
-        <i class="far fa-user"></i>
-        <span>新規登録</span>
-      <% end %>
-      <%= link_to(sessions_new_path) do %>
-        <i class="fas fa-sign-in-alt"></i>
-        <span>ログイン</span>
-      <% end %>
-    <% end %>
-  </div>
-  </header>
-  <div class="container">
+    </div>
+  </nav>
+  <main class="container-sm">
     <%= yield %>
-  </div>
+  </main>
   </body>
   <%= params[:vali_error] %>
 

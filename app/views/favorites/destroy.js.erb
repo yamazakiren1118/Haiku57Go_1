@@ -1,0 +1,3 @@
+var favorite = $(".haiku_favorite<%= params[:haiku_id] %>");
+console.log("<%= params[:haiku_id] %>");
+favorite.replaceWith("<%=j(render partial: "favorites/favorite",locals:{haiku:@haiku,} ) %>");

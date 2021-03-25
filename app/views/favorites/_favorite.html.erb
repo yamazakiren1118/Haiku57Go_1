@@ -1,0 +1,12 @@
+            <% if Favorite.find_by(haiku_id: haiku.id,user_id: carrent_user.id) %>
+            <% favorite = Favorite.find_by(haiku_id: haiku.id,user_id: carrent_user.id) %>
+              <%= link_to(favorite_path(favorite.id,haiku_id: haiku.id),method: :delete ,class:"haiku__favorite haiku_favorite#{haiku.id}",remote: true) do %>
+              <i class="fas fa-trash-alt"></i>
+              <span><%= haiku.favorites.length %>いいね済み</span>
+              <% end %>
+            <% else %>
+            <%= link_to favorites_path(haiku_id: haiku.id),method: :post ,class:"haiku__favorite haiku_favorite#{haiku.id}",remote: true do %>
+                <i class="fas fa-trash-alt"></i>
+                <span><%= haiku.favorites.length %>いいね</span>
+            <% end %>
+            <% end %>
