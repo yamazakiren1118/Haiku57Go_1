@@ -23,12 +23,23 @@ class UsersController < ApplicationController
   def show
     #カレントユーザーにする
     # @haiku = carrent_user.haikus
-    @haikus = carrent_user.haikus.page(params[:page]).per(4)
+    @haikus = carrent_user.haikus.order("id DESC").page(params[:page]).per(4)
+    @favorite_haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
+    # binding.pry
   end
   def destroy
     User.destroy(session[:user_id])
     session[:user_id] = nil
     redirect_to new_user_path
+  end
+  def favorite_haiku
+    # @favorite_haikus = params[:haikus]
+    @favorite_haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
+    
+    binding.pry
+    # @favorite_haikus.each do |i|
+    #   p i
+    # end
   end
 end
 

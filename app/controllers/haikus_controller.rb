@@ -47,6 +47,13 @@ class HaikusController < ApplicationController
     binding.pry
     
   end
+  def favorite_haiku
+    # @haikus = Haiku.all.sort{|a,b| a.favorites.length <=> b.favorites.length}.reverse
+    # @haiku = Kaminari.paginate_array(@haikus).page(params[:page]).per(4)
+    @haiku = Haiku.all.page(params[:page]).per(4)
+    # render template: "pages/index"
+    # binding.pry
+  end
 end
 
 private

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/haikus/:id/edit',to:'haikus#edit',as: 'edit_haikus'
   get 'haikus/search'
   post '/favorites',to: "favorites#create"
+  get 'users/favorite_haiku'
+  get 'haikus/favorite_haiku'
 
   # get "users/:id", to: "users#show", as: "user_path"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

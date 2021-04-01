@@ -1,2 +1,12 @@
-<h1>俳句一覧</h1>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>俳句一覧</h1>
+        <%= link_to(controller: :haikus,action: :favorite_haiku,remote: true) do%>
+            <button class="btn btn-secondary">人気順へ</button>
+        <% end %>
+    </div>
+</div>
+<div id="haikus_block">
 <%= render partial: "pages/haikus_index",locals: {haikus:@haikus}%>
+</div>
+

@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :haikus, dependent: :destroy
-  has_many :user_haikus, through: :haikus
   has_many :favorites
+  has_many :favorite_haikus, through: :favorites,source: :haiku
   # has_many :haikus, dependent: :destroy
 
   validates :name , presence:true,
