@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>ユーザープロフィール</h1>
+        <%= link_to(user_path(carrent_user.id)) do%>
+            <button class="btn btn-secondary">今までの俳句へ</button>
+        <% end %>
+    </div>
+</div>
+<div id="haikus_block">
+    <%= render partial: "pages/haikus_index",locals: {haikus:@sort_haikus}%>
+</div>
+
+
+
+<%= link_to "アカウント削除",user_path(session[:user_id]),method: :delete,class: :user_del%>

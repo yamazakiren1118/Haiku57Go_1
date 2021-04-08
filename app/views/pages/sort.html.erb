@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>最新ランキング</h1>
+        <%= link_to(root_path()) do%>
+            <button class="btn btn-secondary">最新の俳句へ</button>
+        <% end %>
+    </div>
+</div>
+<div id="haikus_block">
+    <%= render partial: "pages/haikus_index",locals: {haikus:@sort_haikus}%>
+</div>
+
+
+
+

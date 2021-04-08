@@ -21,10 +21,10 @@ class UsersController < ApplicationController
     end
   end
   def show
-    #カレントユーザーにする
-    # @haiku = carrent_user.haikus
     @haikus = carrent_user.haikus.order("id DESC").page(params[:page]).per(4)
     @favorite_haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
+    @x = (carrent_user.haikus.length / 4.0).ceil
+    @haikus2 = carrent_user.haikus.order("id DESC").limit(4).offset((@x-1) * 4)
     # binding.pry
   end
   def destroy
@@ -33,13 +33,13 @@ class UsersController < ApplicationController
     redirect_to new_user_path
   end
   def favorite_haiku
-    # @favorite_haikus = params[:haikus]
+    # @favorite_haikus = carrent_user.favorite_haikus.limit(3)
     @favorite_haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
     
     binding.pry
-    # @favorite_haikus.each do |i|
-    #   p i
-    # end
+  end
+  def sort
+    @sort_haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
   end
 end
 

@@ -1,5 +1,5 @@
 <% haikus.each do |haiku| %>
-<div class="haiku row" >
+<div class="haiku-<%= haiku.id %> row" >
   <div class=" col-md-6 offset-md-3">
     <div class="card border border-success rounded">
       <div class="card-body">
@@ -15,7 +15,7 @@
                 <span>コメント</span>
           <% end %>
           <% if User.find_by(id: haiku.user_id) == carrent_user %>
-            <%= link_to(haiku_path(haiku.id),method: :delete,class: :haiku__del) do %>
+            <%= link_to(haiku_path(haiku.id,haiku_id:haiku.id),method: :delete,remote: true,class: :haiku__del) do %>
                 <i class="fas fa-trash-alt"></i>
                 <span>削除</span>
             <% end %>

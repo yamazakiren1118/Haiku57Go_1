@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h1>ユーザープロフィール</h1>
-        <%= link_to(controller: :users,action: :favorite_haiku,remote: true) do%>
+        <%= link_to(sort_users_path(carrent_user.id)) do%>
             <button class="btn btn-secondary">いいねした俳句へ</button>
         <% end %>
     </div>
@@ -9,5 +9,17 @@
 <div id="haikus_block">
     <%= render partial: "pages/haikus_index",locals: {haikus:@haikus}%>
 </div>
+<div class="col-md-6 offset-md-3">
+    <nav aria-label="page navigation example">
+        <ul class="pagination">
+            <% (0..@x-1).each do |x| %>
+                <li class="page-item">
+                    <a class="page-link" href="/<%= controller_name %>/<%= @haikus[0].user_id %>/?page=<%= x+1 %>"><%= x+1 %></a>
+                </li>
+            <% end %>
+        </ul>
+    </nav>
+</div>
+
 
 <%= link_to "アカウント削除",user_path(session[:user_id]),method: :delete,class: :user_del%>

@@ -16,10 +16,10 @@ class HaikusController < ApplicationController
     end
   end
   def destroy
-    binding.pry
+    # binding.pry
     flash[:danger] = '投稿を削除しました'
     Haiku.destroy(params[:id])
-    redirect_to root_path
+    # redirect_to root_path
   end
   def show
     @haiku = Haiku.find(params[:haiku_id])
@@ -48,9 +48,9 @@ class HaikusController < ApplicationController
     
   end
   def favorite_haiku
-    # @haikus = Haiku.all.sort{|a,b| a.favorites.length <=> b.favorites.length}.reverse
-    # @haiku = Kaminari.paginate_array(@haikus).page(params[:page]).per(4)
-    @haiku = Haiku.all.page(params[:page]).per(4)
+    @haikus = Haiku.all.sort{|a,b| a.favorites.length <=> b.favorites.length}.reverse
+    @haiku = Kaminari.paginate_array(@haikus).page(params[:page]).per(4)
+    # @haiku = Haiku.all.page(params[:page]).per(4)
     # render template: "pages/index"
     # binding.pry
   end
