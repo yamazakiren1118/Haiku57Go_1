@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   #ビフォーアクション　URL params[:id]で取得可能を取得してsessionと参照する
   before_action :check_login, only: [:show]
   def new
-    # binding.pry
+
     @user = User.new
   end
   def create

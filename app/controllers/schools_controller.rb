@@ -9,7 +9,7 @@ class SchoolsController < ApplicationController
 
   def create
     @schools = School.new(school_params)
-    binding.pry
+
     if @schools.save
       flash[:info] = '受け付けました'
       redirect_to root_path
