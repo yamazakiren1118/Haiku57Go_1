@@ -1,3 +1,46 @@
 .alert{
     z-index:100;
 }
+.vw-375{
+    display:none;
+}
+.z-100{
+    z-index:100;
+}
+@media screen and (max-width:375px){
+    body{
+        background-color: red;
+    }
+    #haikus_paginate{
+        .col-sm-6{
+            &:first-child{
+                display:none;
+            }
+        }
+    }
+    .vw-375{
+        display:block;
+    }
+}
+
+
+// <div class="row" id="haikus_paginate">
+//   <div class="col-sm-6 offset-sm-3 mx-auto">
+//     <%= paginate @haikus %>
+//   </div>
+//   <div class="col-sm-6 offset-sm-3 mx-auto vw-375">
+//     <%= link_to_next_page @haikus,'次へ',class:'btn btn-secondary btn-block',remote:true%>
+//   </div>
+// </div>
+// <div class="col-md-6 offset-md-3">
+//     <nav aria-label="page navigation example">
+//         <ul class="pagination">
+//             <% (0..@x-1).each do |x| %>
+//                 <li class="page-item">
+//                     <a class="page-link" href="/<%= controller_name %>/<%= carrent_user.id %>/?page=<%= x+1 %>"><%= x+1 %></a>
+//                 </li>
+//             <% end %>
+//         </ul>
+//     </nav>
+// </div>
+//$("#haikus_block").replaceWith("<%=j(render partial: 'pages/haikus_index',locals: {haikus:@favorite_haikus})%>");

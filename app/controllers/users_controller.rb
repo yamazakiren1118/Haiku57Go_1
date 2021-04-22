@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     binding.pry
   end
   def sort
-    @sort_haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
+    @haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
   end
 end
 

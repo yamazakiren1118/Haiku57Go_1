@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     # binding.pry
   end
   def sort
-    @haikus = Haiku.all.sort{|a,b| a.favorites.length <=> b.favorites.length}.reverse
-    @sort_haikus = Kaminari.paginate_array(@haikus).page(params[:page]).per(4)
+    @sort_haikus = Haiku.all.sort{|a,b| a.favorites.length <=> b.favorites.length}.reverse
+    @haikus = Kaminari.paginate_array(@sort_haikus).page(params[:page]).per(4)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_150437) do
+ActiveRecord::Schema.define(version: 2021_04_21_113242) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "comment1"
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 2021_03_08_150437) do
     t.string "haiku1"
     t.string "haiku2"
     t.string "haiku3"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "haiku1"
+    t.string "haiku2"
+    t.string "haiku3"
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.boolean "permit"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

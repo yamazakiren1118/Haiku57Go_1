@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("custom/custom")
+import 'bootstrap'
+import '../stylesheets/application'
 // require("cusutom")
 
 

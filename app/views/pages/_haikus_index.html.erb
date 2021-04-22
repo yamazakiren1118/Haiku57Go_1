@@ -1,6 +1,6 @@
 <% haikus.each do |haiku| %>
-<div class="haiku-<%= haiku.id %> row" >
-  <div class=" col-md-6 offset-md-3">
+<div class="haiku-<%= haiku.id %> row my-3" >
+  <div class=" col-sm-6 offset-sm-3">
     <div class="card border border-success rounded">
       <div class="card-body">
         <p class="haiku__text"><span><%= haiku.haiku1 %></span></p>
@@ -33,9 +33,13 @@
   </div>
 </div>
 <% end %>
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <%= paginate haikus %>
+<div class="row" id="haikus_paginate">
+  <div class="col-sm-6 offset-sm-3 mx-auto">
+    <%= paginate @haikus %>
+  </div>
+  <div class="col-sm-6 offset-sm-3 mx-auto vw-375 sm-btn">
+    <%= link_to_next_page @haikus,'次へ',class:'btn btn-secondary btn-block',remote:true%>
   </div>
 </div>
+
 

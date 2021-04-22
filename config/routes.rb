@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'schools/new'
   get 'favorites/create'
   root 'pages#index'
   get 'sessions/new'
@@ -20,4 +21,5 @@ Rails.application.routes.draw do
   resources :haikus
   resources :comments
   resources :favorites
+  resources :schools
 end

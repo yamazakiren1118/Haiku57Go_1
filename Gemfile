@@ -59,5 +59,5 @@ gem 'pry-doc'
 gem 'pry-byebug'
 gem 'pry-stack_explorer'
 gem 'mini_racer'
-gem 'bootstrap', '~> 4.5.0'
+
 gem 'kaminari'

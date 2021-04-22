@@ -1,0 +1,4 @@
+
+$("#haikus_block").append("<%= j(render partial: 'pages/haikus_index',locals: {haikus:@haikus})%>");
+$('#haikus_paginate').remove();
+$("#haikus_paginate").html("<div class='col-sm-6 offset-sm-3 mx-auto vw-375 sm-btn' style='display:block'><%= j(link_to_next_page @haikus,'次へ',class:'btn btn-secondary btn-block',remote:true)%></div>");

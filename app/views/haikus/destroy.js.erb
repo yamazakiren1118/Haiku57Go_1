@@ -1,2 +1,4 @@
 <%# console.log('delete'); %>
 $(".haiku-<%=params[:haiku_id]%>").remove();
+$(".flash").html("<div class='alert alert-danger position-absolute top-0 w-100'><p>俳句を削除しました</p></div>");
+setTimeout("$('.alert').fadeOut('slow')", 1000);
