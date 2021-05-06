@@ -6,14 +6,23 @@
     <div class="form-group">
       <%= form.label :haiku1 %>
       <%= form.text_field :haiku1,class:('form-control') %>
+      <% if  @haiku.errors.any? %>
+          <p><%= @haiku.errors[:haiku1][0] %></p>
+      <% end %>
     </div>
     <div class="form-group">
       <%= form.label :haiku2 %>
       <%= form.text_field :haiku2,class:('form-control') %>
+      <% if  @haiku.errors.any? %>
+          <p><%= @haiku.errors[:haiku2][0] %></p>
+      <% end %>
     </div>
     <div class="form-group">
       <%= form.label :haiku3 %>
       <%= form.text_field :haiku3,class:('form-control') %>
+      <% if  @haiku.errors.any? %>
+          <p><%= @haiku.errors[:haiku3][0] %></p>
+      <% end %>
     </div>
     <%= form.hidden_field :user_id,value:session[:user_id] %>
     <%= form.submit :送信,class:('btn btn-secondary btn-block')%>

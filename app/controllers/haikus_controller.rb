@@ -12,7 +12,7 @@ class HaikusController < ApplicationController
       redirect_to new_haiku_path
     else
       flash[:danger] = '投稿に失敗しました'
-      redirect_to new_haiku_path
+      render :new
     end
   end
   def destroy

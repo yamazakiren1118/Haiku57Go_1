@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'haikus/favorite_haiku'
   get 'users/sort/:id',to:'users#sort',as: 'sort_users'
   get '/sort',to:'pages#sort',as:'sort_pages'
+  get 'schools/search'
 
   # get "users/:id", to: "users#show", as: "user_path"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

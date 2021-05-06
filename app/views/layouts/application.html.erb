@@ -42,6 +42,9 @@
             <%= link_to "新規俳句",new_haiku_path,class:'nav-link text-white' %>
           </span>
           <span class="nav-item">
+            <%= link_to "教室一覧",schools_path,class:'nav-link text-white' %>
+          </span>
+          <span class="nav-item">
             <%= link_to(logout_path,method: :delete,class:('nav-link logout_btn text-white')) do %>
               <i class="fas fa-sign-in-alt"></i>
               <span>ログアウト</span>
@@ -62,11 +65,20 @@
           </span>
         <%end%>
       </div>
-      <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
-        <div class="col-xs-4">
-          <%= haiku.text_field :haiku,class:'form-control mr-2' %>
-        </div>
-        <%= haiku.submit :search ,class:'btn btn-primary' %>
+      <% if controller_name == 'schools' %>
+        <%= form_with url:schools_search_path,method: :get,local: :true,class:'form-inline' do |school|%>
+          <div class="col-xs-4">
+            <%= school.text_field :school,class:'form-control mr-2' %>
+          </div>
+          <%= school.submit :searchs ,class:'btn btn-primary' %>
+        <% end %>
+      <% else %>
+        <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
+          <div class="col-xs-4">
+            <%= haiku.text_field :haiku,class:'form-control mr-2' %>
+          </div>
+          <%= haiku.submit :search ,class:'btn btn-primary' %>
+        <% end %>
       <% end %>
     </div>
   </nav>
@@ -96,9 +108,12 @@
             <%= link_to "新規俳句",new_haiku_path,class:'nav-link text-white' %>
           </span>
           <span class="nav-item border-bottom border-white px-3">
+            <%= link_to "教室を登録",new_school_path,class:'nav-link text-white' %>
+          </span>
+          <span class="nav-item border-bottom border-white px-3">
             <%= link_to(logout_path,method: :delete,class:('nav-link logout_btn text-white')) do %>
               <i class="fas fa-sign-in-alt"></i>
-              <span>ログアウト</span>
+              <span>ログアウトs</span>
             <% end %>
           </span>
         <% else %>
@@ -112,6 +127,7 @@
             <%= link_to(sessions_new_path,class:'nav-link text-white') do %>
               <i class="fas fa-sign-in-alt"></i>
               <span>ログイン</span>
+              
             <% end %>
           </span>
         <%end%>
