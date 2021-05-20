@@ -26,6 +26,9 @@
       </button>
       
     <%= link_to '俳句57Go',root_path,class:'navbar-brand text-white'%>
+
+    <div class="btn btn-primary d-md-none" data-toggle="collapse" data-target=".search2">検索</div>
+
     <div class="collapse navbar-collapse">
       <div class="navbar-nav mr-auto">
         <span class="nav-item">
@@ -40,6 +43,9 @@
           </span>
           <span class="nav-item">
             <%= link_to "新規俳句",new_haiku_path,class:'nav-link text-white' %>
+          </span>
+          <span class="nav-item">
+            <%= link_to "教室一覧",schools_path,class:'nav-link text-white' %>
           </span>
           <span class="nav-item">
             <%= link_to(logout_path,method: :delete,class:('nav-link logout_btn text-white')) do %>
@@ -62,15 +68,25 @@
           </span>
         <%end%>
       </div>
-      <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
-        <div class="col-xs-4">
-          <%= haiku.text_field :haiku,class:'form-control mr-2' %>
-        </div>
-        <%= haiku.submit :search ,class:'btn btn-primary' %>
+      <% if controller_name == 'schools' %>
+        <%= form_with url:schools_search_path,method: :get,local: :true,class:'form-inline' do |school|%>
+          <div class="col-xs-4">
+            <%= school.text_field :school,class:'form-control mr-2' %>
+          </div>
+          <%= school.submit "検索" ,class:'btn btn-primary' %>
+        <% end %>
+      <% else %>
+        <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
+          <div class="col-xs-4">
+            <%= haiku.text_field :haiku,class:'form-control mr-2' %>
+          </div>
+          <%= haiku.submit  "検索" ,class:'btn btn-primary' %>
+        <% end %>
       <% end %>
     </div>
   </nav>
 
+<%# 削除予定 %>
   <div class="col-sm-12 mx-0 my-0 px-0 py-0 position-relative">
     <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline collapse navbar-collapse' do |haiku| %>
       <div class="col-xs-4">
@@ -79,6 +95,43 @@
       <%= haiku.submit :search ,class:'btn btn-primary btn-sm' %>
     <% end %>
   </div>
+
+    <div class=" position-relative ">
+        <div class="collapse navbar-collapse search2 position-absolute z-100 container bg-success">
+         
+
+          
+            <% if controller_name == 'schools' %>
+              
+
+               <%= form_with url:schools_search_path,method: :get,local: :true,class:'form-inline' do |school|%>
+                
+                    
+                    <div class="col-8 offset-1">
+                      <%= school.text_field :school,class:'form-control mr-2' %>
+                    </div>
+                    <div class="col-2">
+                      <%= school.submit "検索" ,class:'btn btn-primary' %>
+                    </div>
+              
+                <% end %>
+
+                
+            <% else %>
+                <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
+                <div class="col-8 offset-1">
+                  <%= haiku.text_field :haiku,class:'form-control mr-2 ' %>
+                </div>
+                <div class="col-2">
+                  <%= haiku.submit "検索" ,class:'btn btn-primary' %>
+                </div>
+                <% end %>
+            <% end %>
+            </div>
+          </div>
+
+    </div>
+
   <div class="col-sm-12 mx-0 my-0 px-0 py-0 position-relative">
     <div class="collapse navbar-collapse target nav position-absolute w-100 z-100">
       <ul class="nav navbar-nav w-100 bg-success">
@@ -94,6 +147,9 @@
           </span>
           <span class="nav-item border-bottom border-white px-3">
             <%= link_to "新規俳句",new_haiku_path,class:'nav-link text-white' %>
+          </span>
+          <span class="nav-item border-bottom border-white px-3">
+            <%= link_to "教室を登録",new_school_path,class:'nav-link text-white' %>
           </span>
           <span class="nav-item border-bottom border-white px-3">
             <%= link_to(logout_path,method: :delete,class:('nav-link logout_btn text-white')) do %>
@@ -112,6 +168,7 @@
             <%= link_to(sessions_new_path,class:'nav-link text-white') do %>
               <i class="fas fa-sign-in-alt"></i>
               <span>ログイン</span>
+              
             <% end %>
           </span>
         <%end%>
