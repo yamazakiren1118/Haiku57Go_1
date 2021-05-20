@@ -1,18 +1,21 @@
-<h1>ユーザーログイン</h1>
+
 
 <div class="row">
   <div class="col-md-8 offset-md-2">
+  <h1>ユーザーログイン</h1>
   <%= form_with url:'/login',local:true,scope: :session do |form| %>
     <div class="form-group">
-      <%= form.label :name %>
-      <%= form.text_field :name,class:('form-control') %>  
+      <%= form.label t("session.name"); %>
+      
+      <%= form.text_field :name,class:('form-control') %> 
+
     </div>
     <div class="form-group">
-      <%= form.label :email %>
+      <%= form.label t("session.email") %>
       <%= form.text_field :email,class:('form-control') %>
     </div>
     <div class="form-group">
-      <%= form.label :password %>
+      <%= form.label t("session.password") %>
       <%= form.password_field :password,class:('form-control') %>
     </div>
     <%= form.submit :送信,class:('btn btn-secondary btn-block')%>

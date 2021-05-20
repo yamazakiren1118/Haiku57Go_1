@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
   def index
-    @schools = School.all
+    @schools = School.all.order("id DESC").page(params[:page]).per(2)
   end
 
   def new

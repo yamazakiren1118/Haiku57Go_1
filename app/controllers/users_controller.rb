@@ -16,8 +16,8 @@ class UsersController < ApplicationController
       # redirect_to "/users/#{@user.id}"
     else
       flash[:danger] = "失敗しました"
-      # binding.pry
-      redirect_to new_user_path
+      binding.pry
+      render :new
     end
   end
   def show
@@ -45,7 +45,7 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:name,:email,:password,:password_confirmation)
+  params.require(:user).permit(:name,:email,:password,:password_digest)
 end
 
 def check_login

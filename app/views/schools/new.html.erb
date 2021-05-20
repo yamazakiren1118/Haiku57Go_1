@@ -10,7 +10,7 @@
                 <%= form.label :name %>
                 <%= form.text_field :name,class:'form-control' %>
                 <% if  @schools.errors.any? %>
-                    <p><%= @schools.errors[:name][0] %></p>
+                    <p><%= @schools.errors.full_messages_for(:name).first %></p>
                 <% end %>
             </div>
 
@@ -18,7 +18,7 @@
                 <%= form.label :address %>
                 <%= form.text_field :address,class:'form-control' %>
                 <% if  @schools.errors.any? %>
-                    <p><%= @schools.errors[:address][0] %></p>
+                    <p><%= @schools.errors.full_messages_for(:address).first %></p>
                 <% end %>
             </div>
 
@@ -26,7 +26,7 @@
                 <%= form.label :email %>
                 <%= form.text_field :email,class:'form-control' %>
                 <% if  @schools.errors.any? %>
-                    <p><%= @schools.errors[:email][0] %></p>
+                    <p><%= @schools.errors.full_messages_for(:email).first %></p>
                 <% end %>
             </div>
 
@@ -34,7 +34,7 @@
                 <%= form.label :haiku1 %>
                 <%= form.text_field :haiku1,class:'form-control' %>
                 <% if  @schools.errors.any? %>
-                    <p><%= @schools.errors[:haiku1][0] %></p>
+                    <p><%= @schools.errors.full_messages_for(:haiku1).first %></p>
                 <% end %>
             </div>
 
@@ -42,7 +42,7 @@
                 <%= form.label :haiku2 %>
                 <%= form.text_field :haiku2,class:'form-control' %>
                 <% if  @schools.errors.any? %>
-                    <p><%= @schools.errors[:haiku2][0] %></p>
+                    <p><%= @schools.errors.full_messages_for(:haiku2).first %></p>
                 <% end %>
             </div>
 
@@ -50,7 +50,7 @@
                 <%= form.label :haiku3 %>
                 <%= form.text_field :haiku3,class:'form-control' %>
                 <% if  @schools.errors.any? %>
-                    <p><%= @schools.errors[:haiku3][0] %></p>
+                    <p><%= @schools.errors.full_messages_for(:haiku3).first %></p>
                 <% end %>
             </div>
 

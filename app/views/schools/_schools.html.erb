@@ -28,3 +28,13 @@
     </div>
     <% end %>
 <% end %>
+<div id="haiku_block">
+<div class="row" id="haikus_paginate">
+  <div class="col-sm-6 offset-sm-3 mx-auto">
+    <%= paginate @schools %>
+  </div>
+  <div class="col-sm-6 offset-sm-3 mx-auto vw-375 sm-btn">
+    <%= link_to_next_page @schools,'次へ',class:'btn btn-secondary btn-block',remote:true%>
+  </div>
+</div>
+</div>
