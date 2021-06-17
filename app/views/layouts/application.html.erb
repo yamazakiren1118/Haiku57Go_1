@@ -11,6 +11,7 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Potta+One&display=swap"%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
   </head>
   <body>
   <div class="flash">
@@ -27,7 +28,7 @@
       
     <%= link_to '俳句57Go',root_path,class:'navbar-brand text-white'%>
 
-    <div class="btn btn-primary d-md-none" data-toggle="collapse" data-target=".search2">検索</div>
+    <div class="btn btn-primary d-sm-none" data-toggle="collapse" data-target=".search2">検索</div>
 
     <div class="collapse navbar-collapse">
       <div class="navbar-nav mr-auto">
@@ -53,6 +54,12 @@
               <span>ログアウト</span>
             <% end %>
           </span>
+          <span class="nav-item">
+            <%= link_to(chats_path,class:('nav-link text-white')) do %>
+              <i class="fas"></i>
+              <span>チャット</span>
+            <% end %>
+          </span>
         <% else %>
           <span class="nav-item">
            <%= link_to(new_user_path,class:'nav-link text-white') do %>
@@ -73,7 +80,7 @@
           <div class="col-xs-4">
             <%= school.text_field :school,class:'form-control mr-2' %>
           </div>
-          <%= school.submit "検索" ,class:'btn btn-primary' %>
+          <%= school.submit "教室を検索" ,class:'btn btn-primary' %>
         <% end %>
       <% else %>
         <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
@@ -104,26 +111,26 @@
             <% if controller_name == 'schools' %>
               
 
-               <%= form_with url:schools_search_path,method: :get,local: :true,class:'form-inline' do |school|%>
+               <%= form_with url:schools_search_path,method: :get,local: :true,class:'form-inline my-3' do |school|%>
                 
                     
-                    <div class="col-8 offset-1">
-                      <%= school.text_field :school,class:'form-control mr-2' %>
+                    <div class="col-6 offset-1 p-0">
+                      <%= school.text_field :school,class:'form-control-sm mr-2 col-12 p-0' %>
                     </div>
-                    <div class="col-2">
-                      <%= school.submit "検索" ,class:'btn btn-primary' %>
+                    <div class="col-5">
+                      <%= school.submit "教室を検索" ,class:'btn btn-primary btn-sm  col-12' %>
                     </div>
               
                 <% end %>
 
                 
             <% else %>
-                <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline' do |haiku| %>
-                <div class="col-8 offset-1">
-                  <%= haiku.text_field :haiku,class:'form-control mr-2 ' %>
+                <%= form_with url:haikus_search_path,method: :get,local: :true,class:'form-inline my-3' do |haiku| %>
+                <div class="col-7 offset-1 p-0">
+                  <%= haiku.text_field :haiku,class:'form-control-sm mr-2  col-12 p-0' %>
                 </div>
-                <div class="col-2">
-                  <%= haiku.submit "検索" ,class:'btn btn-primary' %>
+                <div class="col-4">
+                  <%= haiku.submit "検索" ,class:'btn btn-primary btn-sm col-12' %>
                 </div>
                 <% end %>
             <% end %>
@@ -149,12 +156,18 @@
             <%= link_to "新規俳句",new_haiku_path,class:'nav-link text-white' %>
           </span>
           <span class="nav-item border-bottom border-white px-3">
-            <%= link_to "教室を登録",new_school_path,class:'nav-link text-white' %>
+            <%= link_to "教室一覧",schools_path,class:'nav-link text-white' %>
           </span>
           <span class="nav-item border-bottom border-white px-3">
             <%= link_to(logout_path,method: :delete,class:('nav-link logout_btn text-white')) do %>
               <i class="fas fa-sign-in-alt"></i>
               <span>ログアウト</span>
+            <% end %>
+          </span>
+          <span class="nav-item border-bottom border-white px-3">
+            <%= link_to(chats_path,class:('nav-link text-white')) do %>
+              <i class="fas"></i>
+              <span>チャット</span>
             <% end %>
           </span>
         <% else %>

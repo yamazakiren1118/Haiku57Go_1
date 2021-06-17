@@ -34,7 +34,8 @@ class SchoolsController < ApplicationController
   end
 
   def search
-    @schools = School.where("name LIKE ?","%#{params[:school]}%").or(School.where("address LIKE ?","%#{params[:school]}%")).or(School.where("email LIKE ?","%#{params[:school]}%")).or(School.where("haiku1 LIKE ?","%#{params[:school]}%")).or(School.where("haiku2 LIKE ?","%#{params[:school]}%")).or(School.where("haiku3 LIKE ?","%#{params[:school]}%"))
+    @schools = School.where("name LIKE ?","%#{params[:school]}%").or(School.where("address LIKE ?","%#{params[:school]}%")).or(School.where("email LIKE ?","%#{params[:school]}%")).or(School.where("haiku1 LIKE ?","%#{params[:school]}%")).or(School.where("haiku2 LIKE ?","%#{params[:school]}%")).or(School.where("haiku3 LIKE ?","%#{params[:school]}%")).page(params[:page]).per(4)
+    binding.pry
   end
 
   private

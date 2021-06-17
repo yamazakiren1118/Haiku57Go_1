@@ -1,0 +1,37 @@
+<div class="row my-3">
+    <%= link_to 'チャットルームを作成', new_chat_path,class:'btn btn-block btn-primary col-sm-6 offset-sm-2 px-3' %>
+</div>
+<div class=" row" >
+  <div class=" col-sm-6 offset-sm-2">
+    <% @chats.each do |chat| %>
+      <div class=" row" >
+      <div class=" col-sm-12 my-3">
+        <div class="card border border-success rounded">
+          <div class="card-body">
+            <p class="haiku__text"><span><%= chat.chat1 %></span></p>
+            <p class="haiku__text"><span><%= chat.chat2 %></span></p>
+            <p class="haiku__text"><span><%= chat.chat3 %></span></p>
+          </div>
+          <div class="card-footer border-success">
+            <%= link_to 'コメント', chat_path(chat.id) %>
+          </div>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-4 banner my-3">
+      <%= image_tag 'banner_pc.png',class:'pc'%>
+      <%= image_tag 'banner_sp.png',class:'sp'%>
+  </div>
+</div>
+<div class="row" id="haikus_paginate">
+  <div class="col-sm-6 offset-sm-2 mx-auto">
+    <%= paginate @chats %>
+  </div>
+  <div class="col-sm-6 offset-sm-2 mx-auto vw-375 sm-btn">
+    <%= link_to_next_page @chats,'次へ',class:'btn btn-secondary btn-block',remote:true%>
+  </div>
+</div>
+
+

@@ -41,6 +41,18 @@ class UsersController < ApplicationController
   def sort
     @haikus = carrent_user.favorite_haikus.order("id DESC").page(params[:page]).per(4)
   end
+
+
+  def pagenate
+    params[:page] = params[:page].to_i + 1
+    @haikus = Haiku.all.order("id DESC").page(params[:page]).per(4)
+    # binding.pry
+    puts "pagenateaaaaaaa#{params[:page]}"
+    respond_to do |format|
+      format.js
+    end
+    puts "ALLOKALLOKALLOKALLOKALLOKALLOK"
+  end
 end
 
 private

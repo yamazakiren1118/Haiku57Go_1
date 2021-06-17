@@ -1,18 +1,41 @@
 .alert{
     z-index:100;
 }
+
 .vw-375{
     display:none;
 }
 .z-100{
     z-index:100;
 }
-@media screen and (max-width:375px){
-    body{
-        background-color: red;
+.banner{
+    text-align: center;
+    img{
+        max-width:100%;
+        &.pc{
+            @media screen and (max-width:376px){
+                display:none;
+            }
+        }
+        // &.tb{
+        //     display:none;
+        //     @media screen and (max-width:576px) and (min-width:375px){
+        //         display:inline;
+        //     }
+        // }
+        &.sp{
+            display:none;
+            @media screen and (max-width:376px){
+                display:inline;
+            }
+        }
     }
+}
+
+@media screen and (max-width:375px){
+
     #haikus_paginate{
-        .col-sm-6{
+        .col-sm-6,.col-sm-8{
             &:first-child{
                 display:none;
             }

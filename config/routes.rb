@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+  get 'chat_comments/create'
   get 'schools/new'
   get 'favorites/create'
   root 'pages#index'
@@ -14,6 +16,9 @@ Rails.application.routes.draw do
   get 'users/sort/:id',to:'users#sort',as: 'sort_users'
   get '/sort',to:'pages#sort',as:'sort_pages'
   get 'schools/search'
+  get 'pages/pagenate',to:'pages#pagenate'
+  get 'users/pagenate',to:'users#pagenate'
+  
 
   # get "users/:id", to: "users#show", as: "user_path"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -23,4 +28,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :favorites
   resources :schools
+  resources :chats
+  resources :chat_comments
 end
