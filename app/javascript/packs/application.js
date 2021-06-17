@@ -11,6 +11,7 @@ require("jquery")
 require("custom/custom")
 import 'bootstrap'
 import '../stylesheets/application'
+
 // require("cusutom")
 
 

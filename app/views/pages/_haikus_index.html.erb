@@ -1,45 +1,61 @@
-<% haikus.each do |haiku| %>
-<div class="haiku-<%= haiku.id %> row my-3" >
-  <div class=" col-sm-6 offset-sm-3">
-    <div class="card border border-success rounded">
-      <div class="card-body">
-        <p class="haiku__text"><span><%= haiku.haiku1 %></span></p>
-        <p class="haiku__text"><span><%= haiku.haiku2 %></span></p>
-        <p class="haiku__text"><span><%= haiku.haiku3 %></span></p>
-      </div>
-      <div class="card-footer border-success">
-        <% if carrent_user != nil %>
-          <%= link_to(haiku_path(haiku.id ,haiku_id: haiku.id),class: :haiku__comment) do %>
-                <i class="fas fa-trash-alt"></i>
-                <%= haiku.comments.size %>
-                <span>コメント</span>
-          <% end %>
-          <% if User.find_by(id: haiku.user_id) == carrent_user %>
-            <%= link_to(haiku_path(haiku.id,haiku_id:haiku.id),method: :delete,remote: true,class: :haiku__del) do %>
-                <i class="fas fa-trash-alt"></i>
-                <span>削除</span>
-            <% end %>
-            <%= link_to(edit_haikus_path(haiku.id,haiku_id:haiku.id),class: :haiku__edit) do %>
-                <i class="fas fa-trash-alt"></i>
-                <span>編集</span>
-            <% end %>
+<div class="row">
+  <%= hidden_field_tag :control,controller_name,id:"control"%>
+  <%= hidden_field_tag :page,params[:page].to_i,id:"page"%>
 
-          <% else %>
-            <%= render partial: "favorites/favorite",locals:{haiku:haiku,} %>
-          <% end %>
-        <% end %>
+  <div class="col-sm-6 offset-sm-2" id="haikus">
+    <% haikus.each do |haiku| %>
+      <div class="haiku-<%= haiku.id %> row " >
+        <div class=" col-sm-12  my-3">
+          <div class="card border border-success rounded">
+            <div class="card-body">
+              <p class="haiku__text"><span><%= haiku.haiku1 %></span></p>
+              <p class="haiku__text"><span><%= haiku.haiku2 %></span></p>
+              <p class="haiku__text"><span><%= haiku.haiku3 %></span></p>
+            </div>
+            <div class="card-footer border-success">
+            <%= haiku.id %>
+              <% if carrent_user != nil %>
+                <%= link_to(haiku_path(haiku.id ,haiku_id: haiku.id),class: :haiku__comment) do %>
+                      <i class="fas fa-trash-alt"></i>
+                      <%= haiku.comments.size %>
+                      <span>コメント</span>
+                <% end %>
+                <% if User.find_by(id: haiku.user_id) == carrent_user %>
+                  <%= link_to(haiku_path(haiku.id,haiku_id:haiku.id),method: :delete,remote: true,class: :haiku__del) do %>
+                      <i class="fas fa-trash-alt"></i>
+                      <span>削除</span>
+                  <% end %>
+                  <%= link_to(edit_haikus_path(haiku.id,haiku_id:haiku.id),class: :haiku__edit) do %>
+                      <i class="fas fa-trash-alt"></i>
+                      <span>編集</span>
+                  <% end %>
+
+                <% else %>
+                  <%= render partial: "favorites/favorite",locals:{haiku:haiku,} %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-4 banner my-3">
+    <%= image_tag 'banner_pc.png',class:'pc'%>
+    <%= image_tag 'banner_sp.png',class:'sp'%>
+    
+  </div>
+
+
+</div>
+    <div class="row" id="haikus_paginate">
+      <div class="col-sm-6 offset-sm-2">
+        <%= paginate @haikus %>
+      </div>
+      <div class="col-sm-6 offset-sm-2 vw-375 sm-btn">
+        <%= link_to_next_page @haikus,'次へ',class:'btn btn-secondary btn-block',remote:true%>
       </div>
     </div>
-  </div>
-</div>
-<% end %>
-<div class="row" id="haikus_paginate">
-  <div class="col-sm-6 offset-sm-3 mx-auto">
-    <%= paginate @haikus %>
-  </div>
-  <div class="col-sm-6 offset-sm-3 mx-auto vw-375 sm-btn">
-    <%= link_to_next_page @haikus,'次へ',class:'btn btn-secondary btn-block',remote:true%>
-  </div>
-</div>
+
 
 
